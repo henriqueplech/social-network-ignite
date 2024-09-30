@@ -9,8 +9,7 @@ import styles from "./Post.module.css";
 
 export function Post({ author, publishedAt, content  }) {
   const [comments, setComments] = useState([
-    1,
-    2,
+    'Post muito bacana, parbéns!',
   ])
 
 //date fns org site onde vc pode consultar os formatos a serem utilizados
@@ -26,6 +25,8 @@ export function Post({ author, publishedAt, content  }) {
 
   function handleCreateNewComment() {
     event.preventDefault()
+
+    console.log(event.target)
 
     setComments([...comments, comments.length + 1]);
   }
@@ -58,6 +59,7 @@ export function Post({ author, publishedAt, content  }) {
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
         <textarea 
+            name=""
             placeholder="Deixe um comentário"
         />
         <footer>
@@ -66,7 +68,7 @@ export function Post({ author, publishedAt, content  }) {
       </form>
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return <Comment />
+          return <Comment content={comment} />
         })}
       </div>
 
