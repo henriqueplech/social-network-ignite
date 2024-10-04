@@ -38,10 +38,11 @@ export function Post({ author, publishedAt, content  }) {
 
   }
 
-  function handleNewCommentChange(event) {
-    //console.log(event.target.value)
+  function handleNewCommentChange() {
+    event.target.setCustomValidity('');
     setNewCommentText(event.target.value);
   }
+
   function handleNewCommentInvalid(){
     event.target.setCustomValidity('Esse campo é obrigatório');
   }
@@ -54,6 +55,8 @@ export function Post({ author, publishedAt, content  }) {
 
     setComments(commentsWithoutDeletedOne);
   }
+
+  //const isNewCommentEmpy = newCommentText.length === 0;
 
   return (
     <article className={styles.post}>
